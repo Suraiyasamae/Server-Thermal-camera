@@ -66,7 +66,7 @@ void setup() {
 
   // Configure web server
   server.on("/", HTTP_GET, []() {
-    String html = "<html><body><h1>Thermal Camera</h1><pre id='data'></pre><button onclick='saveData()'>Save Data</button><script>function updateData() {fetch('/thermal').then(response => response.json()).then(data => {document.getElementById('data').textContent = JSON.stringify(data, null, 2);});}function saveData() {fetch('/save');}setInterval(updateData, 500);</script></body></html>";
+    String html = "<html><body><pre id='data'></pre><script>function updateData() {fetch('/thermal').then(response => response.json()).then(data => {document.getElementById('data').textContent = JSON.stringify(data, null, 2);});}function saveData() {fetch('/save');}setInterval(updateData, 500);</script></body></html>";
     server.send(200, "text/html", html);
   });
 
